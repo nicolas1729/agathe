@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.ibp"
+    },
+    "jhipsterVersion": "6.3.0",
+    "applicationType": "monolith",
+    "baseName": "agathe",
+    "packageName": "fr.ibp",
+    "packageFolder": "fr/ibp",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "YTI4MzFlOWZkZWU2OGEwNzI4ZDRkYzlkZjliYjNlZGFhZTU5YThkNjA4YTM3NmNkY2RmMTUyN2E3ZmE5YjE3Njg1ZTgxZGIyNTk4MjU3NThmYzc3YzhhOTViNjdiYWNlZGJmNDM3MzQzNDMyZmY1NjYxNWRjODg3YmYzNzc1ZWE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
