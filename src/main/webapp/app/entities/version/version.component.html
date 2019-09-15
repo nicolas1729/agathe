@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Versions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-version" [routerLink]="['/version/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Version
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="versions?.length === 0">
+        <span>No versions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="versions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nom"><span>Nom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span>Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="versionCommunautaire"><span>Version Communautaire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="commentaire"><span>Commentaire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let version of versions ;trackBy: trackId">
+                <td><a [routerLink]="['/version', version.id, 'view' ]">{{version.id}}</a></td>
+                <td>{{version.nom}}</td>
+                <td>{{version.date | date:'mediumDate'}}</td>
+                <td>{{version.versionCommunautaire}}</td>
+                <td>{{version.commentaire}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/version', version.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/version', version.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/version', { outlets: { popup: version.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
